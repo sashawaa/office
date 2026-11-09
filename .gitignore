@@ -1,0 +1,46 @@
+# === Секреты и учётные данные ===
+*.key
+*.pem
+*.pub
+*.ppk
+passwords.txt
+secrets.env
+*.credentials
+id_rsa
+id_rsa.pub
+
+# === Базы данных SQLite (по ТЗ) ===
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+
+# === Логи и временные файлы ===
+*.log
+*.tmp
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# === Файлы GNS3 (тяжёлые, не нужны в репо) ===
+*.gns3
+*.net
+*.cfg
+*.snap
+ Dynamips/
+ .gns3/
+
+# === Виртуальные машины и образы ===
+*.qcow2
+*.vmdk
+*.iso
+*.ova
+
+# === Node-RED ===
+node_modules/
+.nodered/
+
+# === Сетевые ключи SSH хостов ===
+known_hosts
+config.ssh
