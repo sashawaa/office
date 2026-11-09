@@ -26,6 +26,6 @@
 ✅ Создана структура репозитория, заполнены README.md, .gitignore, journal.md.
 
 ### Скриншоты-доказательства:
-- `proofs/redos_ip_check.png` — вывод ip address show на REDOS8-1
-- `proofs/win_ipconfig.png` — вывод ipconfig на Windows Server
-- `proofs/cisco_interfaces.png` — show ip interface brief на Cisco RTR
+- `photos/redos_ip_check.png` — вывод ip address show на REDOS8-1
+- `photos/win_ipconfig.png` — вывод ipconfig на Windows Server
+- `photos/cisco_interfaces.png` — show ip interface brief на Cisco RTR
