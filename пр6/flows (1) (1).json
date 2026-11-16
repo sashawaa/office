@@ -1,0 +1,32 @@
+﻿[
+    {
+        "id": "468c0e6d17cc2c61",
+        "type": "inject",
+        "z": "356c425fe4202c39",
+        "name": "TEMP-01",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "timestamp",
+                "v": "",
+                "vt": "date"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 1,
+        "topic": "",
+        "payload": "35",
+        "payloadType": "jsonata",
+        "x": 170,
+        "y": 700,
+        "wires": [
+            [
+                "1985435f0cedd3af"
+            ]
+        ]
+    }
+]
