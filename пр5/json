@@ -1,8 +1,16 @@
 [
     {
-        "id": "c214f403823c9749",
+        "id": "987ce32e9af93331",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8aaf9247ce82c34e",
         "type": "switch",
-        "z": "a81a4e178ce33cbd",
+        "z": "987ce32e9af93331",
         "name": "",
         "property": "reading.value",
         "propertyType": "msg",
@@ -21,25 +29,30 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 290,
-        "y": 340,
+        "x": 170,
+        "y": 260,
         "wires": [
             [
-                "f3fdcfdd4f232dc9"
+                "39bf991edb9e18b6"
             ],
             [
-                "f06e48b0dae54e43"
+                "a74e4a715cd92c8e"
             ]
         ]
     },
     {
-        "id": "468c0e6d17cc2c61",
+        "id": "bc014b65cc32eef7",
         "type": "inject",
-        "z": "a81a4e178ce33cbd",
+        "z": "987ce32e9af93331",
         "name": "TEMP-01 ",
         "props": [
             {
                 "p": "payload"
+            },
+            {
+                "p": "timestamp",
+                "v": "",
+                "vt": "date"
             }
         ],
         "repeat": "5",
@@ -47,20 +60,20 @@
         "once": true,
         "onceDelay": 1,
         "topic": "",
-        "payload": "$round($random()*15+20,1)",
-        "payloadType": "jsonata",
-        "x": 350,
-        "y": 440,
+        "payload": "25",
+        "payloadType": "num",
+        "x": 230,
+        "y": 360,
         "wires": [
             [
-                "1985435f0cedd3af"
+                "8d4dc6e7f1714b10"
             ]
         ]
     },
     {
-        "id": "febc4b9ae9906fe0",
+        "id": "8a54bb26aee94f77",
         "type": "http request",
-        "z": "a81a4e178ce33cbd",
+        "z": "987ce32e9af93331",
         "name": "POST",
         "method": "POST",
         "ret": "txt",
@@ -73,18 +86,18 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 630,
-        "y": 340,
+        "x": 510,
+        "y": 260,
         "wires": [
             [
-                "f29d66515ce5fbc8"
+                "7982b7aafe58ebe8"
             ]
         ]
     },
     {
-        "id": "f29d66515ce5fbc8",
+        "id": "7982b7aafe58ebe8",
         "type": "debug",
-        "z": "a81a4e178ce33cbd",
+        "z": "987ce32e9af93331",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -94,14 +107,14 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 850,
-        "y": 340,
+        "x": 730,
+        "y": 260,
         "wires": []
     },
     {
-        "id": "f06e48b0dae54e43",
+        "id": "a74e4a715cd92c8e",
         "type": "change",
-        "z": "a81a4e178ce33cbd",
+        "z": "987ce32e9af93331",
         "name": "больше 30",
         "rules": [
             {
@@ -168,7 +181,7 @@
                 "tot": "str"
             },
             {
-"t": "set",
+                "t": "set",
                 "p": "payload",
                 "pt": "msg",
                 "to": "reading",
@@ -180,18 +193,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 450,
-        "y": 360,
+        "x": 330,
+        "y": 280,
         "wires": [
             [
-                "febc4b9ae9906fe0"
+                "8a54bb26aee94f77"
             ]
         ]
     },
     {
-        "id": "f3fdcfdd4f232dc9",
+        "id": "39bf991edb9e18b6",
         "type": "change",
-        "z": "a81a4e178ce33cbd",
+        "z": "987ce32e9af93331",
         "name": "меньше 30",
         "rules": [
             {
@@ -270,18 +283,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 450,
-        "y": 280,
+        "x": 330,
+        "y": 200,
         "wires": [
             [
-                "febc4b9ae9906fe0"
+                "8a54bb26aee94f77"
             ]
         ]
     },
     {
-        "id": "ec5cd0b39202980c",
+        "id": "a9759f0ebf3970cd",
         "type": "inject",
-        "z": "a81a4e178ce33cbd",
+        "z": "987ce32e9af93331",
         "name": "HUM-01",
         "props": [
             {
@@ -298,20 +311,20 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "$round($random()*40+30,1)",
-        "payloadType": "jsonata",
-        "x": 340,
-        "y": 520,
+        "payload": "59",
+        "payloadType": "num",
+        "x": 220,
+        "y": 440,
         "wires": [
             [
-                "7b6be29b08511ac1"
+                "1f7e951d4c583413"
             ]
         ]
     },
     {
-        "id": "d64df1054a3d731a",
+        "id": "49f69a51bc160fb9",
         "type": "http request",
-        "z": "a81a4e178ce33cbd",
+        "z": "987ce32e9af93331",
         "name": "POST",
         "method": "POST",
         "ret": "txt",
@@ -324,35 +337,35 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 730,
-        "y": 500,
+        "x": 610,
+        "y": 420,
         "wires": [
             [
-                "3615cf67b5a38fa4"
+                "bba9530b301db55a"
             ]
         ]
     },
     {
-        "id": "3615cf67b5a38fa4",
+        "id": "bba9530b301db55a",
         "type": "debug",
-        "z": "a81a4e178ce33cbd",
+        "z": "987ce32e9af93331",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
-"console": false,
+        "console": false,
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 870,
-        "y": 500,
+        "x": 750,
+        "y": 420,
         "wires": []
     },
     {
-        "id": "7b6be29b08511ac1",
+        "id": "1f7e951d4c583413",
         "type": "change",
-        "z": "a81a4e178ce33cbd",
+        "z": "987ce32e9af93331",
         "name": "HUM-01",
         "rules": [
             {
@@ -417,18 +430,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 520,
-        "y": 520,
+        "x": 400,
+        "y": 440,
         "wires": [
             [
-                "d64df1054a3d731a"
+                "49f69a51bc160fb9"
             ]
         ]
     },
     {
-        "id": "1985435f0cedd3af",
+        "id": "8d4dc6e7f1714b10",
         "type": "change",
-        "z": "a81a4e178ce33cbd",
+        "z": "987ce32e9af93331",
         "name": "TEMP-01",
         "rules": [
             {
@@ -493,12 +506,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 540,
-        "y": 440,
+        "x": 420,
+        "y": 360,
         "wires": [
             [
-                "d64df1054a3d731a",
-                "c214f403823c9749"
+                "49f69a51bc160fb9",
+                "8aaf9247ce82c34e"
             ]
         ]
     }
