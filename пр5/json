@@ -1,0 +1,505 @@
+[
+    {
+        "id": "c214f403823c9749",
+        "type": "switch",
+        "z": "a81a4e178ce33cbd",
+        "name": "",
+        "property": "reading.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "30",
+                "vt": "str"
+            },
+            {
+                "t": "gte",
+                "v": "30",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 290,
+        "y": 340,
+        "wires": [
+            [
+                "f3fdcfdd4f232dc9"
+            ],
+            [
+                "f06e48b0dae54e43"
+            ]
+        ]
+    },
+    {
+        "id": "468c0e6d17cc2c61",
+        "type": "inject",
+        "z": "a81a4e178ce33cbd",
+        "name": "TEMP-01 ",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 1,
+        "topic": "",
+        "payload": "$round($random()*15+20,1)",
+        "payloadType": "jsonata",
+        "x": 350,
+        "y": 440,
+        "wires": [
+            [
+                "1985435f0cedd3af"
+            ]
+        ]
+    },
+    {
+        "id": "febc4b9ae9906fe0",
+        "type": "http request",
+        "z": "a81a4e178ce33cbd",
+        "name": "POST",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://192.168.20.12:8080/api/readings",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 630,
+        "y": 340,
+        "wires": [
+            [
+                "f29d66515ce5fbc8"
+            ]
+        ]
+    },
+    {
+        "id": "f29d66515ce5fbc8",
+        "type": "debug",
+        "z": "a81a4e178ce33cbd",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "f06e48b0dae54e43",
+        "type": "change",
+        "z": "a81a4e178ce33cbd",
+        "name": "больше 30",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reading.sensor_id",
+                "pt": "msg",
+                "to": "FAN-01",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.unit",
+                "pt": "msg",
+                "to": "state",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.zone",
+                "pt": "msg",
+                "to": "server_room",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.value",
+                "pt": "msg",
+                "to": "1",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "reading.timestamp",
+                "pt": "msg",
+                "to": "$millis()",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "reading.fan.state",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.fan.actuator_id",
+                "pt": "msg",
+                "to": "FAN-01",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.fan.zone",
+                "pt": "msg",
+                "to": "server_room",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.fan.mode",
+                "pt": "msg",
+                "to": "auto",
+                "tot": "str"
+            },
+            {
+"t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "reading",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 450,
+        "y": 360,
+        "wires": [
+            [
+                "febc4b9ae9906fe0"
+            ]
+        ]
+    },
+    {
+        "id": "f3fdcfdd4f232dc9",
+        "type": "change",
+        "z": "a81a4e178ce33cbd",
+        "name": "меньше 30",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reading.sensor_id",
+                "pt": "msg",
+                "to": "FAN-01",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.unit",
+                "pt": "msg",
+                "to": "state",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.zone",
+                "pt": "msg",
+                "to": "server_room",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.value",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "reading.timestamp",
+                "pt": "msg",
+                "to": "$millis()",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "reading.fan.state",
+                "pt": "msg",
+                "to": "OFF",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.fan.actuator_id",
+                "pt": "msg",
+                "to": "FAN-01",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.fan.zone",
+                "pt": "msg",
+                "to": "server_room",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.fan.mode",
+                "pt": "msg",
+                "to": "auto",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "reading",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 450,
+        "y": 280,
+        "wires": [
+            [
+                "febc4b9ae9906fe0"
+            ]
+        ]
+    },
+    {
+        "id": "ec5cd0b39202980c",
+        "type": "inject",
+        "z": "a81a4e178ce33cbd",
+        "name": "HUM-01",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "timestamp",
+                "v": "",
+                "vt": "date"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "$round($random()*40+30,1)",
+        "payloadType": "jsonata",
+        "x": 340,
+        "y": 520,
+        "wires": [
+            [
+                "7b6be29b08511ac1"
+            ]
+        ]
+    },
+    {
+        "id": "d64df1054a3d731a",
+        "type": "http request",
+        "z": "a81a4e178ce33cbd",
+        "name": "POST",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://192.168.20.12:8080/api/readings",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 730,
+        "y": 500,
+        "wires": [
+            [
+                "3615cf67b5a38fa4"
+            ]
+        ]
+    },
+    {
+        "id": "3615cf67b5a38fa4",
+        "type": "debug",
+        "z": "a81a4e178ce33cbd",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+"console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "7b6be29b08511ac1",
+        "type": "change",
+        "z": "a81a4e178ce33cbd",
+        "name": "HUM-01",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reading",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "reading.value",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "reading.sensor_id",
+                "pt": "msg",
+                "to": "HUM-01",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.zone",
+                "pt": "msg",
+                "to": "work_area",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.timestamp",
+                "pt": "msg",
+                "to": "$millis()",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "reading.unit",
+                "pt": "msg",
+                "to": "%",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "reading",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"Content-Type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 520,
+        "wires": [
+            [
+                "d64df1054a3d731a"
+            ]
+        ]
+    },
+    {
+        "id": "1985435f0cedd3af",
+        "type": "change",
+        "z": "a81a4e178ce33cbd",
+        "name": "TEMP-01",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reading",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "reading.value",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "reading.sensor_id",
+                "pt": "msg",
+                "to": "TEMP-01",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.zone",
+                "pt": "msg",
+                "to": "server_room",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.timestamp",
+                "pt": "msg",
+                "to": "$millis()",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "reading.unit",
+                "pt": "msg",
+                "to": "C",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "reading",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"Content-Type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 440,
+        "wires": [
+            [
+                "d64df1054a3d731a",
+                "c214f403823c9749"
+            ]
+        ]
+    }
+]
