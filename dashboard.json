@@ -1,653 +1,686 @@
-{
-  "id": null,
-  "uid": "office-controller-lab",
-  "title": "Office CTRL датчики и вентилятор",
-  "tags": [
-    "office",
-    "lab"
-  ],
-  "timezone": "browser",
-  "schemaVersion": 38,
-  "version": 1,
-  "refresh": "5s",
-  "time": {
-    "from": "now-15m",
-    "to": "now"
-  },
-  "panels": [
+[
     {
-      "id": 1,
-      "title": "Приложение CTRL доступно",
-      "type": "stat",
-      "gridPos": {
-        "x": 0,
-        "y": 0,
-        "w": 8,
-        "h": 4
-      },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus-office"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "up{job=\"office-controller\"}",
-          "legendFormat": "",
-          "instant": true,
-          "range": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus-office"
-          }
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "none",
-          "noValue": "Нет данных",
-          "mappings": [
+        "id": "356c425fe4202c39",
+        "type": "tab",
+        "label": "IoT Flow (CTRL + DB)",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "c214f403823c9749",
+        "type": "switch",
+        "z": "356c425fe4202c39",
+        "name": "",
+        "property": "reading.value",
+        "propertyType": "msg",
+        "rules": [
             {
-              "type": "value",
-              "options": {
-                "0": {
-                  "text": "НЕДОСТУПНО",
-                  "color": "red"
-                },
-                "1": {
-                  "text": "ДОСТУПНО",
-                  "color": "green"
-                }
-              }
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "colorMode": "value",
-        "graphMode": "none",
-        "textMode": "auto",
-        "orientation": "auto"
-      }
-    },
-    {
-      "id": 2,
-      "title": "Температура серверной",
-      "type": "stat",
-      "gridPos": {
-        "x": 8,
-        "y": 0,
-        "w": 8,
-        "h": 4
-      },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus-office"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "office_temperature_celsius{job=\"office-controller\"} and on(job,instance) (up{job=\"office-controller\"} == 1)",
-          "legendFormat": "",
-          "instant": true,
-          "range": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus-office"
-          }
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "celsius",
-          "noValue": "Нет данных",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "colorMode": "value",
-        "graphMode": "none",
-        "textMode": "auto",
-        "orientation": "auto"
-      }
-    },
-    {
-      "id": 3,
-      "title": "Влажность рабочей зоны",
-      "type": "stat",
-      "gridPos": {
-        "x": 16,
-        "y": 0,
-        "w": 8,
-        "h": 4
-      },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus-office"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "office_humidity_percent{job=\"office-controller\"} and on(job,instance) (up{job=\"office-controller\"} == 1)",
-          "legendFormat": "",
-          "instant": true,
-          "range": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus-office"
-          }
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "percent",
-          "noValue": "Нет данных",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "colorMode": "value",
-        "graphMode": "none",
-        "textMode": "auto",
-        "orientation": "auto"
-      }
-    },
-    {
-      "id": 4,
-      "title": "Вентилятор последнее состояние",
-      "type": "stat",
-      "gridPos": {
-        "x": 0,
-        "y": 4,
-        "w": 8,
-        "h": 4
-      },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus-office"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "office_fan_on{job=\"office-controller\"} and on(job,instance) (up{job=\"office-controller\"} == 1)",
-          "legendFormat": "",
-          "instant": true,
-          "range": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus-office"
-          }
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "none",
-          "noValue": "Нет данных",
-          "mappings": [
+                "t": "lt",
+                "v": "30",
+                "vt": "str"
+            },
             {
-              "type": "value",
-              "options": {
-                "0": {
-                  "text": "OFF",
-                  "color": "blue"
-                },
-                "1": {
-                  "text": "ON",
-                  "color": "green"
-                }
-              }
+                "t": "gte",
+                "v": "30",
+                "vt": "str"
             }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 110,
+        "y": 600,
+        "wires": [
+            [
+                "f3fdcfdd4f232dc9"
+            ],
+            [
+                "f06e48b0dae54e43"
             ]
-          }
-        },
-        "overrides": []
-      },
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "colorMode": "value",
-        "graphMode": "none",
-        "textMode": "auto",
-        "orientation": "auto"
-      }
+        ]
     },
     {
-      "id": 5,
-      "title": "Последний сообщённый режим",
-      "type": "stat",
-      "gridPos": {
-        "x": 8,
-        "y": 4,
-        "w": 8,
-        "h": 4
-      },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus-office"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "office_control_mode_auto{job=\"office-controller\"} and on(job,instance) (up{job=\"office-controller\"} == 1)",
-          "legendFormat": "",
-          "instant": true,
-          "range": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus-office"
-          }
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "none",
-          "noValue": "Нет данных",
-          "mappings": [
+        "id": "468c0e6d17cc2c61",
+        "type": "inject",
+        "z": "356c425fe4202c39",
+        "name": "TEMP-01",
+        "props": [
             {
-              "type": "value",
-              "options": {
-                "1": {
-                  "text": "AUTO",
-                  "color": "green"
-                }
-              }
+                "p": "payload"
             }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 1,
+        "topic": "",
+        "payload": "$round($random()*15+20,1)",
+        "payloadType": "jsonata",
+        "x": 170,
+        "y": 700,
+        "wires": [
+            [
+                "1985435f0cedd3af"
             ]
-          }
-        },
-        "overrides": []
-      },
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "colorMode": "value",
-        "graphMode": "none",
-        "textMode": "auto",
-        "orientation": "auto"
-      }
+        ]
     },
     {
-      "id": 6,
-      "title": "Показания получены после запуска",
-      "type": "stat",
-      "gridPos": {
-        "x": 16,
-        "y": 4,
-        "w": 8,
-        "h": 4
-      },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus-office"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "office_sensor_has_reading{job=\"office-controller\"} and on(job,instance) (up{job=\"office-controller\"} == 1)",
-          "legendFormat": "{{sensor_id}}",
-          "instant": true,
-          "range": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus-office"
-          }
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "none",
-          "noValue": "Нет данных",
-          "mappings": [
+        "id": "febc4b9ae9906fe0",
+        "type": "http request",
+        "z": "356c425fe4202c39",
+        "name": "POST CTRL",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://192.168.20.12:8080/api/readings",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 810,
+        "y": 620,
+        "wires": [
+            [
+                "f29d66515ce5fbc8"
+            ]
+        ]
+    },
+    {
+        "id": "f29d66515ce5fbc8",
+        "type": "debug",
+        "z": "356c425fe4202c39",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "f06e48b0dae54e43",
+        "type": "change",
+        "z": "356c425fe4202c39",
+        "name": "больше 30",
+        "rules": [
             {
-              "type": "value",
-              "options": {
-                "0": {
-                  "text": "ЕЩЁ НЕ ПОЛУЧЕНЫ",
-                  "color": "red"
-                },
-                "1": {
-                  "text": "ПОЛУЧЕНЫ",
-                  "color": "green"
-                }
-              }
+                "t": "set",
+                "p": "reading.sensor_id",
+                "pt": "msg",
+                "to": "FAN-01",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.unit",
+                "pt": "msg",
+                "to": "state",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.zone",
+                "pt": "msg",
+                "to": "server_room",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.value",
+                "pt": "msg",
+                "to": "1",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "reading.timestamp",
+                "pt": "msg",
+                "to": "$millis()",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "reading.fan.state",
+                "pt": "msg",
+                "to": "ON",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.fan.actuator_id",
+                "pt": "msg",
+                "to": "FAN-01",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.fan.zone",
+                "pt": "msg",
+                "to": "server_room",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.fan.mode",
+                "pt": "msg",
+                "to": "auto",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "reading",
+                "tot": "msg"
             }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 270,
+        "y": 620,
+        "wires": [
+            [
+                "febc4b9ae9906fe0",
+                "db_fan_on"
             ]
-          }
-        },
-        "overrides": []
-      },
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "colorMode": "value",
-        "graphMode": "none",
-        "textMode": "auto",
-        "orientation": "auto"
-      }
+        ]
     },
     {
-      "id": 7,
-      "title": "Возраст показаний TEMP и HUM",
-      "type": "stat",
-      "gridPos": {
-        "x": 0,
-        "y": 8,
-        "w": 12,
-        "h": 5
-      },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus-office"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "office_sensor_age_seconds{job=\"office-controller\"} and on(job,instance) (up{job=\"office-controller\"} == 1)",
-          "legendFormat": "{{sensor_id}}",
-          "instant": true,
-          "range": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus-office"
-          }
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "s",
-          "noValue": "Нет данных",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 20
-              }
+        "id": "f3fdcfdd4f232dc9",
+        "type": "change",
+        "z": "356c425fe4202c39",
+        "name": "меньше 30",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reading.sensor_id",
+                "pt": "msg",
+                "to": "FAN-01",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.unit",
+                "pt": "msg",
+                "to": "state",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.zone",
+                "pt": "msg",
+                "to": "server_room",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.value",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "reading.timestamp",
+                "pt": "msg",
+                "to": "$millis()",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "reading.fan.state",
+                "pt": "msg",
+                "to": "OFF",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.fan.actuator_id",
+                "pt": "msg",
+                "to": "FAN-01",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.fan.zone",
+                "pt": "msg",
+                "to": "server_room",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.fan.mode",
+                "pt": "msg",
+                "to": "auto",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "reading",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 270,
+        "y": 540,
+        "wires": [
+            [
+                "febc4b9ae9906fe0",
+                "db_fan_off"
             ]
-          }
-        },
-        "overrides": []
-      },
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "colorMode": "value",
-        "graphMode": "none",
-        "textMode": "auto",
-        "orientation": "auto"
-      }
+        ]
     },
     {
-      "id": 8,
-      "title": "Время показания по часам датчика",
-      "type": "stat",
-      "gridPos": {
-        "x": 12,
-        "y": 8,
-        "w": 12,
-        "h": 5
-      },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus-office"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "(office_sensor_last_reading_timestamp_seconds{job=\"office-controller\"} > 0) * 1000 and on(job,instance) (up{job=\"office-controller\"} == 1)",
-          "legendFormat": "{{sensor_id}}",
-          "instant": true,
-          "range": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus-office"
-          }
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "dateTimeAsIso",
-          "noValue": "Нет данных",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
+        "id": "ec5cd0b39202980c",
+        "type": "inject",
+        "z": "356c425fe4202c39",
+        "name": "HUM-01",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "timestamp",
+                "v": "",
+                "vt": "date"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "$round($random()*40+30,1)",
+        "payloadType": "jsonata",
+        "x": 160,
+        "y": 780,
+        "wires": [
+            [
+                "7b6be29b08511ac1"
             ]
-          }
-        },
-        "overrides": []
-      },
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "colorMode": "value",
-        "graphMode": "none",
-        "textMode": "auto",
-        "orientation": "auto"
-      }
+        ]
     },
     {
-      "id": 9,
-      "title": "Температура во времени",
-      "type": "timeseries",
-      "gridPos": {
-        "x": 0,
-        "y": 13,
-        "w": 12,
-        "h": 7
-      },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus-office"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "office_temperature_celsius{job=\"office-controller\"} and on(job,instance) (up{job=\"office-controller\"} == 1)",
-          "legendFormat": "TEMP-01",
-          "instant": false,
-          "range": true,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus-office"
-          }
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "celsius",
-          "noValue": "Нет данных",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
+        "id": "d64df1054a3d731a",
+        "type": "http request",
+        "z": "356c425fe4202c39",
+        "name": "POST CTRL",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://192.168.20.12:8080/api/readings",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 850,
+        "y": 800,
+        "wires": [
+            [
+                "3615cf67b5a38fa4"
             ]
-          }
-        },
-        "overrides": []
-      },
-      "options": {
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "multi"
-        }
-      }
+        ]
     },
     {
-      "id": 10,
-      "title": "Влажность во времени",
-      "type": "timeseries",
-      "gridPos": {
-        "x": 12,
-        "y": 13,
-        "w": 12,
-        "h": 7
-      },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus-office"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "office_humidity_percent{job=\"office-controller\"} and on(job,instance) (up{job=\"office-controller\"} == 1)",
-          "legendFormat": "HUM-01",
-          "instant": false,
-          "range": true,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus-office"
-          }
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "percent",
-          "noValue": "Нет данных",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
+        "id": "3615cf67b5a38fa4",
+        "type": "debug",
+        "z": "356c425fe4202c39",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "7b6be29b08511ac1",
+        "type": "change",
+        "z": "356c425fe4202c39",
+        "name": "HUM-01",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reading",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "reading.value",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "reading.sensor_id",
+                "pt": "msg",
+                "to": "HUM-01",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.zone",
+                "pt": "msg",
+                "to": "work_area",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.timestamp",
+                "pt": "msg",
+                "to": "$millis()",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "reading.unit",
+                "pt": "msg",
+                "to": "%",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "reading",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"Content-Type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 780,
+        "wires": [
+            [
+                "d64df1054a3d731a",
+                "db_hum"
             ]
-          }
-        },
-        "overrides": []
-      },
-      "options": {
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "multi"
-        }
-      }
+        ]
+    },
+    {
+        "id": "1985435f0cedd3af",
+        "type": "change",
+        "z": "356c425fe4202c39",
+        "name": "TEMP-01",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reading",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "reading.value",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "reading.sensor_id",
+                "pt": "msg",
+                "to": "TEMP-01",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.zone",
+                "pt": "msg",
+                "to": "server_room",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "reading.timestamp",
+                "pt": "msg",
+                "to": "$millis()",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "reading.unit",
+                "pt": "msg",
+                "to": "C",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "reading",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"Content-Type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 700,
+        "wires": [
+            [
+                "d64df1054a3d731a",
+                "c214f403823c9749",
+                "db_temp"
+            ]
+        ]
+    },
+    {
+        "id": "db_temp",
+        "type": "change",
+        "z": "356c425fe4202c39",
+        "name": "TEMP для DB",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"sensor_id\":\"TEMP-01\",\"value\":payload.value,\"zone\":\"server_room\",\"unit\":\"C\",\"timestamp\":payload.timestamp}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 680,
+        "wires": [
+            [
+                "db_post_readings"
+            ]
+        ]
+    },
+    {
+        "id": "db_hum",
+        "type": "change",
+        "z": "356c425fe4202c39",
+        "name": "HUM для DB",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"sensor_id\":\"HUM-01\",\"value\":payload.value,\"zone\":\"work_area\",\"unit\":\"%\",\"timestamp\":payload.timestamp}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 820,
+        "wires": [
+            [
+                "db_post_readings"
+            ]
+        ]
+    },
+    {
+        "id": "db_fan_on",
+        "type": "change",
+        "z": "356c425fe4202c39",
+        "name": "FAN ON для DB",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"actuator_id\":\"FAN-01\",\"zone\":\"server_room\",\"state\":\"ON\",\"mode\":\"auto\",\"timestamp\":reading.timestamp}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 500,
+        "wires": [
+            [
+                "db_post_actuators"
+            ]
+        ]
+    },
+    {
+        "id": "db_fan_off",
+        "type": "change",
+        "z": "356c425fe4202c39",
+        "name": "FAN OFF для DB",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"actuator_id\":\"FAN-01\",\"zone\":\"server_room\",\"state\":\"OFF\",\"mode\":\"auto\",\"timestamp\":reading.timestamp}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 620,
+        "wires": [
+            [
+                "db_post_actuators"
+            ]
+        ]
+    },
+    {
+        "id": "db_post_readings",
+        "type": "http request",
+        "z": "356c425fe4202c39",
+        "name": "POST DB /api/readings",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.20.10:8081/api/readings",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "application/json",
+                "valueValue": ""
+            }
+        ],
+        "x": 810,
+        "y": 740,
+        "wires": [
+            [
+                "3615cf67b5a38fa4"
+            ]
+        ]
+    },
+    {
+        "id": "db_post_actuators",
+        "type": "http request",
+        "z": "356c425fe4202c39",
+        "name": "POST DB /api/actuators",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.20.10:8081/api/actuators",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "application/json",
+                "valueValue": ""
+            }
+        ],
+        "x": 830,
+        "y": 540,
+        "wires": [
+            [
+                "f29d66515ce5fbc8"
+            ]
+        ]
     }
-  ],
-  "annotations": {
-    "list": []
-  },
-  "templating": {
-    "list": []
-  }
-}
+]
