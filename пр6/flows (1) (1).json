@@ -16,13 +16,13 @@
         ],
         "repeat": "5",
         "crontab": "",
-        "once": true,
+        "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "23",
+        "payload": "33",
         "payloadType": "num",
-        "x": 200,
-        "y": 320,
+        "x": 560,
+        "y": 180,
         "wires": [
             [
                 "ac5b237a7e90610b"
@@ -46,10 +46,10 @@
         ],
         "repeat": "5",
         "crontab": "",
-        "once": true,
+        "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "67",
+        "payload": "60",
         "payloadType": "num",
         "x": 200,
         "y": 460,
@@ -65,13 +65,6 @@
         "z": "f80b1d22511e5db7",
         "name": "Собрать сообщение TEMP-01",
         "rules": [
-            {
-                "t": "set",
-                "p": "reading",
-                "pt": "msg",
-                "to": "{}",
-                "tot": "json"
-            },
             {
                 "t": "set",
                 "p": "reading.value",
@@ -143,13 +136,6 @@
         "z": "f80b1d22511e5db7",
         "name": "Собрать сообщение HUM-01",
         "rules": [
-            {
-                "t": "set",
-                "p": "reading",
-                "pt": "msg",
-                "to": "{}",
-                "tot": "json"
-            },
             {
                 "t": "set",
                 "p": "reading.value",
@@ -258,7 +244,7 @@
         "y": 460,
         "wires": [
             [
-                "e3fa92d9ec90130d"
+                "ea0683f4bb79757d"
             ]
         ]
     },
@@ -275,25 +261,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1160,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "e3fa92d9ec90130d",
-        "type": "debug",
-        "z": "f80b1d22511e5db7",
-        "name": "Ответ DB (показания) - 200",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1160,
-        "y": 460,
+        "x": 1170,
+        "y": 400,
         "wires": []
     },
     {
@@ -483,8 +452,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1330,
-        "y": 640,
+        "x": 1360,
+        "y": 620,
         "wires": [
             [
                 "0e8ad4a8c340f643"
@@ -508,10 +477,10 @@
         "senderr": false,
         "headers": [],
         "x": 1330,
-        "y": 720,
+        "y": 760,
         "wires": [
             [
-                "f9da58de595e289e"
+                "0e8ad4a8c340f643"
             ]
         ]
     },
@@ -528,25 +497,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1660,
-        "y": 640,
-        "wires": []
-    },
-    {
-        "id": "f9da58de595e289e",
-        "type": "debug",
-        "z": "f80b1d22511e5db7",
-        "name": "Ответ DB (вентилятор) - 200",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1660,
-        "y": 720,
+        "x": 1670,
+        "y": 680,
         "wires": []
     }
 ]
